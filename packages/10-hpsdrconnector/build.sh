@@ -8,7 +8,7 @@ if [[ $(uname -m) == "x86_64" ]]; then
     fi
 
     git clone --depth 1 ${BRANCH_ARG} https://github.com/openwebrx/hpsdrconnector
-    pushd js8py
+    pushd hpsdrconnector
     if [[ ! -z ${BUILD_NUMBER:-} ]]; then
         GBP_ARGS="--debian-branch=develop --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
         gbp dch ${GBP_ARGS}
