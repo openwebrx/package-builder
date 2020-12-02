@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BRANCH_ARG=""
-if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
-    BRANCH_ARG="-b ${RELEASE_BRANCH}"
+if grep -q "Debian" /etc/os-release; then
+  BRANCH=debian/buster
+else
+  BRANCH=ubuntu/groovy
 fi
 
-git clone --depth 1 ${BRANCH_ARG} https://github.com/openwebrx/hpsdrconnector
-pushd hpsdrconnector
-if [[ ! -z ${BUILD_NUMBER:-} ]]; then
-    GBP_ARGS="--debian-branch=master --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
-    gbp dch ${GBP_ARGS}
-fi
-debuild -us -uc
+git clone https://github.com/openwebrx/hpsdrconnector-debian
+pushd hpsdrconnector-debian
+git checkout $BRANCH
+gbp buildpackage --git-debian-branch=$BRANCH
 popd
