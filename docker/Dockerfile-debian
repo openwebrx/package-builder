@@ -19,6 +19,8 @@ RUN apt-get update && \
       libfftw3-dev librtlsdr-dev libsoapysdr-dev soapysdr-tools netcat git-buildpackage libitpp-dev libsndfile1-dev portaudio19-dev help2man && \
     if grep -q "Debian" /etc/os-release; then \
         apt-get -t buster-backports install --no-upgrade -y dh-make-golang dh-golang golang-any; \
+    else \
+        apt-get install --no-upgrade -y dh-make-golang dh-golang golang-any; \
     fi && \
     rm -rf /var/lib/apt/lists/*
 
