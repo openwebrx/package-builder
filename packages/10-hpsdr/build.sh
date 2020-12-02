@@ -10,5 +10,5 @@ fi
 git clone https://github.com/openwebrx/hpsdr-debian
 pushd hpsdr-debian
 git checkout $BRANCH
-gbp buildpackage --debian-branch=$BRANCH
+gbp buildpackage --git-debian-branch=$BRANCH
 popd
