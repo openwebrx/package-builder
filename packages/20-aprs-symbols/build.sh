@@ -12,5 +12,5 @@ if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=${BRANCH} --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
   gbp dch ${GBP_ARGS}
 fi
-debuild -us -uc
+gbp buildpackage --git-debian-branch=$BRANCH
 popd
