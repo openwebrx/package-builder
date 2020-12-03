@@ -11,6 +11,8 @@ pushd aprs-symbols-debian
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=${BRANCH} --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
   gbp dch ${GBP_ARGS}
+  git add debian/changelog
+  git commit -m "snapshot changelog"
 fi
 gbp buildpackage --git-debian-branch=$BRANCH
 popd
