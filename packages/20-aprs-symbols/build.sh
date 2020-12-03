@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BRANCH_ARG=""
 if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
     BRANCH="${RELEASE_BRANCH}"
 else
-    BRANCH="-b debian/sid"
+    BRANCH="debian/sid"
 fi
 git clone --depth 1 -b ${BRANCH} https://github.com/jketterl/aprs-symbols-debian.git
 pushd aprs-symbols-debian
