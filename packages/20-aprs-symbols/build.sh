@@ -4,7 +4,7 @@ set -euo pipefail
 if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
     BRANCH="${RELEASE_BRANCH}"
 else
-    BRANCH="debian/sid"
+    BRANCH="experimental"
 fi
 git clone -b ${BRANCH} https://github.com/jketterl/aprs-symbols-debian.git
 pushd aprs-symbols-debian
