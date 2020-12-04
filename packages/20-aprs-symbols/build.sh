@@ -2,7 +2,8 @@
 set -euo pipefail
 
 if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
-    BRANCH="${RELEASE_BRANCH}"
+    source /etc/os-release
+    BRANCH="${ID}/${VERSION_CODENAME}"
 else
     BRANCH="experimental"
 fi
