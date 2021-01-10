@@ -5,7 +5,7 @@ if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
     source /etc/os-release
     BRANCH="${ID}/${VERSION_CODENAME}"
 else
-    BRANCH="debian"
+    BRANCH="debian/sid"
 fi
 git clone -b ${BRANCH} https://github.com/jketterl/m17-cxx-demod.git
 pushd m17-cxx-demod
