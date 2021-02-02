@@ -5,8 +5,8 @@ BRANCH_ARG=""
 if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
     BRANCH_ARG="-b ${RELEASE_BRANCH}"
 fi
-git clone --depth 1 ${BRANCH_ARG} https://github.com/jketterl/eb200_connector.git
-pushd eb200_connector
+git clone --depth 1 ${BRANCH_ARG} https://github.com/jketterl/runds_connector.git
+pushd runds_connector
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=develop --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
   gbp dch ${GBP_ARGS}
