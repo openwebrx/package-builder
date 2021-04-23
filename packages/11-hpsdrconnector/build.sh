@@ -7,5 +7,5 @@ BRANCH="${ID}/${VERSION_CODENAME}"
 git clone https://github.com/openwebrx/hpsdrconnector-debian
 pushd hpsdrconnector-debian
 git checkout $BRANCH
-gbp buildpackage --git-debian-branch=$BRANCH
+gbp buildpackage --git-debian-branch=$BRANCH -us -uc
 popd
