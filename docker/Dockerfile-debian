@@ -18,7 +18,8 @@ RUN echo 'Acquire::Retries "3";' > /etc/apt/apt.conf.d/80-retries && \
     apt-get update && \
     apt-get install --no-upgrade -y cmake build-essential debsigs git devscripts dh-python python3-all \
       python3-setuptools libfftw3-dev librtlsdr-dev libsoapysdr-dev soapysdr-tools netcat git-buildpackage \
-      libitpp-dev libsndfile1-dev portaudio19-dev help2man pkg-config libboost-program-options-dev libcodec2-dev && \
+      libitpp-dev libsndfile1-dev portaudio19-dev help2man pkg-config libboost-program-options-dev libcodec2-dev \
+      libprotobuf-dev protobuf-compiler && \
     if grep -q "Debian" /etc/os-release; then \
         apt-get -t buster-backports install --no-upgrade -y dh-make-golang dh-golang golang-any; \
     else \
