@@ -5,7 +5,7 @@ if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
     source /etc/os-release
     BRANCH="${ID}/${VERSION_CODENAME}"
 else
-    BRANCH="experimental"
+    BRANCH="debian/sid"
 fi
 git clone -b ${BRANCH} https://github.com/jketterl/aprs-symbols-debian.git
 pushd aprs-symbols-debian
@@ -15,5 +15,5 @@ if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   git add debian/changelog
   git commit -m "snapshot changelog"
 fi
-gbp buildpackage --git-debian-branch=$BRANCH -us -uc
+gbp buildpackage --git-debian-branch=${BRANCH} -us -uc
 popd
