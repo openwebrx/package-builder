@@ -2,6 +2,7 @@ ARG BASE
 FROM $BASE
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBEMAIL=jenkins@openwebrx.de
 
 RUN echo 'Acquire::Retries "3";' > /etc/apt/apt.conf.d/80-retries && \
     apt-get update && \
