@@ -15,15 +15,17 @@ SIGN_KEY=\$(cat "\$SIGN_KEY_FILE")
 
 BUILD_NUMBER_ARG=""
 RELEASE_BRANCH="${params.releaseBranch ?: ""}"
+BUILD_ENV="latest"
 if [[ ! -z "\${RELEASE_BRANCH}" ]]; then
     BUILD_NUMBER_ARG="-e RELEASE_BRANCH=\${RELEASE_BRANCH}"
+    BUILD_ENV="stable"
 elif [[ ! -z "\${BUILD_NUMBER:-}" ]]; then
     BUILD_NUMBER_ARG="-e BUILD_NUMBER=\${BUILD_NUMBER}"
 fi
 
 for DIST in ${params.dists.join(" ")}; do
     OUTPUT_DIST=\${DIST//[:]/_}
-    TAG=\${OUTPUT_DIST}_\${ARCH}_latest
+    TAG=\${OUTPUT_DIST}_\${ARCH}_\${BUILD_ENV}
 
     docker pull \${IMAGE_NAME}:\${TAG}
     RC=0
