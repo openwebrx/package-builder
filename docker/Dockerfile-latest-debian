@@ -1,5 +1,5 @@
-ARG BASE
-FROM $BASE
+ARG STABLE_TAG
+FROM 768356633999.dkr.ecr.eu-central-1.amazonaws.com/package-builder:$STABLE_TAG
 
 RUN if grep -q "Ubuntu" /etc/os-release; then \
         echo "deb https://repo.openwebrx.de/ubuntu/ unstable main" > /etc/apt/sources.list.d/openwebrx-unstable.list; \
