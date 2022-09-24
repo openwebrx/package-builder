@@ -5,4 +5,4 @@ RUN if grep -q "Ubuntu" /etc/os-release; then \
         echo "deb https://repo.openwebrx.de/ubuntu/ unstable main" > /etc/apt/sources.list.d/openwebrx-unstable.list; \
     else \
         echo "deb https://repo.openwebrx.de/debian/ experimental main" > /etc/apt/sources.list.d/openwebrx-experimental.list; \
-    fi && \
+    fi
