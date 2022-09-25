@@ -18,7 +18,7 @@ RELEASE_BRANCH="${params.releaseBranch ?: ""}"
 BUILD_ENV="latest"
 if [[ ! -z "\${RELEASE_BRANCH}" ]]; then
     BUILD_NUMBER_ARG="-e RELEASE_BRANCH=\${RELEASE_BRANCH}"
-    BUILD_ENV="stable"
+    BUILD_ENV="staging"
 elif [[ ! -z "\${BUILD_NUMBER:-}" ]]; then
     BUILD_NUMBER_ARG="-e BUILD_NUMBER=\${BUILD_NUMBER}"
 fi
