@@ -1,0 +1,8 @@
+ARG BASE_TAG
+FROM package-builder:$BASE_TAG
+
+RUN if grep -q "Ubuntu" /etc/os-release; then \
+        echo "deb https://repo.openwebrx.de/ubuntu/ staging main" > /etc/apt/sources.list.d/openwebrx-staging.list; \
+    else \
+        echo "deb https://repo.openwebrx.de/debian/ staging main" > /etc/apt/sources.list.d/openwebrx-staging.list; \
+    fi
