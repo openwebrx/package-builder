@@ -44,4 +44,4 @@ for PACKAGE in `ls *.deb`; do
     debsigs --sign=maint -k $SIGN_KEY_ID $PACKAGE
 done
 
-tar cvfz /packages.tar.gz *.deb
+tar cvfz /packages.tar.gz *.deb *.ddeb
