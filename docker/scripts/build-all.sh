@@ -33,6 +33,13 @@ for PACKAGE in ${PACKAGES}; do
             mv $DEB /tmp/output
         done
     fi
+
+    if ls *.ddeb; then
+        dpkg -i *.ddeb
+        for DEB in `ls *.ddeb`; do
+            mv $DEB /tmp/output
+        done
+    fi
 done
 
 export GPG_TTY=$(tty)
@@ -41,6 +48,10 @@ gpg --batch --import <(echo "$SIGN_KEY")
 cd /tmp/output
 
 for PACKAGE in `ls *.deb`; do
+    debsigs --sign=maint -k $SIGN_KEY_ID $PACKAGE
+done
+
+for PACKAGE in `ls *.ddeb`; do
     debsigs --sign=maint -k $SIGN_KEY_ID $PACKAGE
 done
 
