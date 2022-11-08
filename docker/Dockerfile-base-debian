@@ -10,7 +10,7 @@ RUN echo 'Acquire::Retries "3";' > /etc/apt/apt.conf.d/80-retries && \
     apt-get install --no-upgrade -y wget gnupg apt-transport-https && \
     wget -O - https://repo.openwebrx.de/debian/key.gpg.txt | apt-key add && \
     if grep -q "Ubuntu" /etc/os-release; then \
-        echo "deb https://repo.openwebrx.de/ubuntu/ kudu main" > /etc/apt/sources.list.d/openwebrx.list; \
+        echo "deb https://repo.openwebrx.de/ubuntu/ kinetic main" > /etc/apt/sources.list.d/openwebrx.list; \
     else \
         echo "deb https://repo.openwebrx.de/debian/ bullseye main" > /etc/apt/sources.list.d/openwebrx.list; \
     fi && \
