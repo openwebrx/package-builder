@@ -10,7 +10,7 @@ RUN echo 'Acquire::Retries "3";' > /etc/apt/apt.conf.d/80-retries && \
     apt-get install --no-upgrade -y wget gnupg apt-transport-https && \
     wget -O - https://repo.openwebrx.de/debian/key.gpg.txt | gpg --dearmor -o /usr/share/keyrings/openwebrx.gpg && \
     if grep -q "Ubuntu" /etc/os-release; then \
-        echo "deb [signed-by=/usr/share/keyrings/openwebrx.gpg] https://repo.openwebrx.de/ubuntu/ kinetic main" > /etc/apt/sources.list.d/openwebrx.list
+        echo "deb [signed-by=/usr/share/keyrings/openwebrx.gpg] https://repo.openwebrx.de/ubuntu/ kinetic main" > /etc/apt/sources.list.d/openwebrx.list; \
     else \
         echo "deb [signed-by=/usr/share/keyrings/openwebrx.gpg] https://repo.openwebrx.de/debian/ bullseye main" > /etc/apt/sources.list.d/openwebrx.list; \
     fi && \
