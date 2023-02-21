@@ -8,7 +8,7 @@ else
     BRANCH="debian/sid"
 fi
 git clone -b ${BRANCH} https://github.com/openwebrx/msk144decoder-debian.git
-pushd msk144decoder-demod
+pushd msk144decoder-debian
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=${BRANCH} --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
   gbp dch ${GBP_ARGS}
