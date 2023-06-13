@@ -1,3 +1,4 @@
 debian:bullseye
+debian:bookworm
 ubuntu:jammy
 ubuntu:lunar
