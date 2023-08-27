@@ -7,7 +7,7 @@ if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
 else
     BRANCH="debian/sid"
 fi
-git clone -b ${BRANCH} https://github.com/jketterl/dump1090-debian.git
+git clone -b ${BRANCH} https://github.com/openwebrx/dump1090-debian.git
 pushd dump1090-debian
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=${BRANCH} --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
