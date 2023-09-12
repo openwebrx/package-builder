@@ -17,7 +17,7 @@ if [[ ! -z "${1:-}" ]]; then
         fi
     done
     if [[ ! -z "${DEPS}" ]]; then
-        apt-get update && apt-get install -y ${DEPS}
+        apt-get update && apt-get install -y --no-install-recommends ${DEPS}
     fi
     PACKAGES=$(cd /packages && ls -d ??-${1})
 fi
