@@ -8,8 +8,8 @@ else
     BRANCH="debian/sid"
 fi
 BINARY_ONLY=""
-git clone -b ${BRANCH} https://github.com/openwebrx/SoapyFCDPP-debian
-pushd SoapyFCDPP-debian
+git clone -b ${BRANCH} https://github.com/openwebrx/SoapyPlutoSDR-debian
+pushd SoapyPlutoSDR-debian
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=${BRANCH} --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
   gbp dch ${GBP_ARGS}
