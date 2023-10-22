@@ -7,6 +7,7 @@ if [[ ! -z ${RELEASE_BRANCH:-} ]]; then
 else
     BRANCH="debian/sid"
 fi
+BINARY_ONLY=""
 git clone -b ${BRANCH} https://github.com/openwebrx/SoapyFCDPP-debian
 pushd SoapyFCDPP-debian
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
@@ -14,6 +15,10 @@ if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   gbp dch ${GBP_ARGS}
   git add debian/changelog
   git commit -m "snapshot changelog"
+  # NOTE: -b builds only binaries, no source package.
+  # we enable this here because there's a number of changes in git that have not been part of a release so far.
+  # this is ok for snapshot builds, but for the release packages it would be nice to have a new release tag.
+  BINARY_ONLY="-b"
 fi
-gbp buildpackage --git-debian-branch=${BRANCH} --git-submodules -us -uc
+gbp buildpackage --git-debian-branch=${BRANCH} --git-submodules -us -uc ${BINARY_ONLY}
 popd
