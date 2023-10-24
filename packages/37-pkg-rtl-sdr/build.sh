@@ -14,7 +14,7 @@ pushd rtl-sdr
 git archive --format tar.gz -o ../rtl-sdr_0.6.0.orig.tar.gz 0.6.0
 popd
 pushd pkg-rtl-sdr
-tar xvfz ../rtl-sdr_0.6.0.orig.tar.gz
+tar xvfz ../rtl-sdr_0.6.0.orig.tar.gz --exclude=debian
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=${BRANCH} --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
   gbp dch ${GBP_ARGS}
