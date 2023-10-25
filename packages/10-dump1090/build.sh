@@ -15,5 +15,5 @@ if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   git add debian/changelog
   git commit -m "snapshot changelog"
 fi
-gbp buildpackage --git-debian-branch=${BRANCH} --git-submodules -us -uc
+gbp buildpackage --git-debian-branch=${BRANCH} -us -uc
 popd

@@ -20,5 +20,5 @@ if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   # this is ok for snapshot builds, but for the release packages it would be nice to have a new release tag.
   BINARY_ONLY="-b"
 fi
-gbp buildpackage --git-debian-branch=${BRANCH} --git-submodules -us -uc ${BINARY_ONLY}
+gbp buildpackage --git-debian-branch=${BRANCH} -us -uc ${BINARY_ONLY}
 popd
