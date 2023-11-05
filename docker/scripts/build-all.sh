@@ -5,6 +5,8 @@ mkdir -p /tmp/output
 mkdir -p /tmp/build
 cd /tmp/build
 
+ARCH=$(uname -m)
+
 PACKAGES=$(cd /packages && ls -d *)
 if [[ ! -z "${1:-}" ]]; then
     DEPS=""
@@ -13,7 +15,10 @@ if [[ ! -z "${1:-}" ]]; then
             break
         fi
         if [[ -e /packages/${PACKAGE}/replacement ]]; then
-            DEPS="$DEPS $(cat /packages/${PACKAGE}/replacement)"
+            DEPS="${DEPS} $(cat /packages/${PACKAGE}/replacement)"
+        fi
+        if [[ -e /packages/${PACKAGE}/replacement.${ARCH} ]]; then
+            DEPS="${DEPS} $(cat /packages/${PACKAGE}/replacement.${ARCH})"
         fi
     done
     if [[ ! -z "${DEPS}" ]]; then
