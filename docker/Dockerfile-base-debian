@@ -18,7 +18,7 @@ RUN echo 'Acquire::Retries "3";' > /etc/apt/apt.conf.d/80-retries && \
     apt-get update && \
     apt-get install -y --no-upgrade --no-install-recommends \
       cmake build-essential debsigs git devscripts lintian dh-python python3-all python3-setuptools libpython3-dev \
-      libfftw3-dev librtlsdr-dev libsoapysdr-dev soapysdr-tools netcat-traditional git-buildpackage libitpp-dev \
+      libfftw3-dev libsoapysdr-dev soapysdr-tools netcat-traditional git-buildpackage libitpp-dev \
       libsndfile1-dev portaudio19-dev help2man pkg-config libboost-program-options-dev libcodec2-dev libprotobuf-dev \
       protobuf-compiler dh-make-golang dh-golang golang-any golang-github-hashicorp-logutils-dev libsamplerate0-dev \
       libicu-dev libudev-dev gfortran libboost-dev libcurl4-openssl-dev libbladerf-dev libhackrf-dev liblimesuite-dev \
