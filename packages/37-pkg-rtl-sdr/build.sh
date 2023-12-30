@@ -10,7 +10,7 @@ fi
 git clone -b ${BRANCH} https://github.com/openwebrx/pkg-rtl-sdr
 wget -O rtl-sdr_2.0.1.orig.tar.gz https://gitea.osmocom.org/sdr/rtl-sdr/archive/v2.0.1.tar.gz
 pushd pkg-rtl-sdr
-tar xvfz ../rtl-sdr_2.0.1.orig.tar.gz --exclude=debian
+tar xvfz ../rtl-sdr_2.0.1.orig.tar.gz --exclude=debian --strip-components=1
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=${BRANCH} --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
   gbp dch ${GBP_ARGS}
