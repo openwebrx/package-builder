@@ -24,7 +24,7 @@ RUN echo 'Acquire::Retries "3";' > /etc/apt/apt.conf.d/80-retries && \
       libicu-dev libudev-dev gfortran libboost-dev libcurl4-openssl-dev libbladerf-dev libhackrf-dev liblimesuite-dev \
       libncurses5-dev lighttpd libliquid-dev libglib2.0-dev libconfig++-dev zlib1g-dev libxml2-dev libjansson-dev \
       libhidapi-dev libiio-dev libad9361-dev xxd qt5-qmake qtbase5-dev libpulse-dev libfaad-dev \
-      libspeexdsp-dev libusb-1.0-0-dev && \
+      libspeexdsp-dev libusb-1.0-0-dev autoconf automake && \
     case `uname -m` in \
         x86_64*) \
             if ! grep "bullseye" /etc/os-release; then \
