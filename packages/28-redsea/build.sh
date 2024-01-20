@@ -8,7 +8,7 @@ else
     BRANCH="debian/sid"
 fi
 git clone -b ${BRANCH} https://github.com/openwebrx/redsea-debian
-pushd resea-debian
+pushd redsea-debian
 if [[ ! -z ${BUILD_NUMBER:-} ]]; then
   GBP_ARGS="--debian-branch=${BRANCH} --snapshot --auto --snapshot-number=${BUILD_NUMBER}"
   gbp dch ${GBP_ARGS}
