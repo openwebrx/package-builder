@@ -9,24 +9,23 @@ ARCH=$(uname -m)
 
 PACKAGES=$(cd /packages && ls -d *)
 if [[ ! -z "${1:-}" ]]; then
-    DEPS=""
-    for PACKAGE in ${PACKAGES}; do
-        if [[ ${PACKAGE:3} == $1 ]]; then
-            break
-        fi
-        if [[ -e /packages/${PACKAGE}/replacement ]]; then
-            DEPS="${DEPS} $(cat /packages/${PACKAGE}/replacement)"
-        fi
-        if [[ -e /packages/${PACKAGE}/replacement.${ARCH} ]]; then
-            DEPS="${DEPS} $(cat /packages/${PACKAGE}/replacement.${ARCH})"
-        fi
-    done
-    if [[ ! -z "${DEPS}" ]]; then
-        apt-get update && apt-get install -y --no-install-recommends ${DEPS}
-    fi
     PACKAGES=$(cd /packages && ls -d ??-${1})
 fi
 echo "package list: ${PACKAGES}"
+
+DEPS=""
+for PACKAGE in ${PACKAGES}; do
+    if [[ -e /packages/${PACKAGE}/dynamic-build-depends ]]; then
+        DEPS="${DEPS} $(cat /packages/${PACKAGE}/dynamic-build-depends)"
+    fi
+    if [[ -e /packages/${PACKAGE}/dynamic-build-depends.${ARCH} ]]; then
+        DEPS="${DEPS} $(cat /packages/${PACKAGE}/dynamic-build-depends.${ARCH})"
+    fi
+done
+
+if [[ ! -z "${DEPS}" ]]; then
+    apt-get update && apt-get install -y --no-install-recommends ${DEPS}
+fi
 
 for PACKAGE in ${PACKAGES}; do
     echo "Building package $PACKAGE"
