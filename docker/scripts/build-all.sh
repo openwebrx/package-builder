@@ -13,23 +13,22 @@ if [[ ! -z "${1:-}" ]]; then
 fi
 echo "package list: ${PACKAGES}"
 
-DEPS=""
 for PACKAGE in ${PACKAGES}; do
+    echo "Checking dependencies for ${PACKAGE}"
+    DEPS=""
     if [[ -e /packages/${PACKAGE}/dynamic-build-depends ]]; then
         DEPS="${DEPS} $(cat /packages/${PACKAGE}/dynamic-build-depends)"
     fi
     if [[ -e /packages/${PACKAGE}/dynamic-build-depends.${ARCH} ]]; then
         DEPS="${DEPS} $(cat /packages/${PACKAGE}/dynamic-build-depends.${ARCH})"
     fi
-done
 
-if [[ ! -z "${DEPS// /}" ]]; then
-    apt-get update && apt-get install -y --no-install-recommends ${DEPS}
-fi
+    if [[ ! -z "${DEPS// /}" ]]; then
+        apt-get update && apt-get install -y --no-install-recommends ${DEPS}
+    fi
 
-for PACKAGE in ${PACKAGES}; do
-    echo "Building package $PACKAGE"
-    /packages/$PACKAGE/build.sh
+    echo "Building package ${PACKAGE}"
+    /packages/${PACKAGE}/build.sh
 
     if ls *.deb; then
         dpkg -i *.deb
