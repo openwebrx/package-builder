@@ -23,7 +23,7 @@ for PACKAGE in ${PACKAGES}; do
     fi
 done
 
-if [[ ! -z "${DEPS}" ]]; then
+if [[ ! -z "${DEPS// /}" ]]; then
     apt-get update && apt-get install -y --no-install-recommends ${DEPS}
 fi
 
