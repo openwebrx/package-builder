@@ -1,4 +1,4 @@
 debian:bullseye
 debian:bookworm
 ubuntu:jammy
-ubuntu:mantic
+ubuntu:noble
